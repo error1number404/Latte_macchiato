@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from addEditCoffeeForm import Ui_Form as addEditCoffeeForm
+from addEditCoffeeForm import Ui_Form as AddEditCoffeeForm
 import sqlite3
 
 class Ui_MainWindow(object):
@@ -64,13 +64,13 @@ class Ui_MainWindow(object):
         con.close()
 
     def add(self):
-        addForm = addEditCoffeeForm(self)
+        addForm = AddEditCoffeeForm(self)
         addForm.load_combo_box()
 
     def edit(self):
         con = sqlite3.connect(self.database)
         cur = con.cursor()
-        editForm = addEditCoffeeForm(self)
+        editForm = AddEditCoffeeForm(self)
         editForm.NameLineEdit.setText(self.tableWidget.item(self.tableWidget.currentRow(), 1).text())
         grade = cur.execute('select name from grade_of_coffee where id = ?',
                             (self.tableWidget.item(self.tableWidget.currentRow(), 2).text(),)).fetchone()[0]

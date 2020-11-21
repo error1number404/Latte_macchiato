@@ -15,6 +15,7 @@ from PyQt5.QtCore import Qt
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self, parent):
         super(Ui_Form,self).__init__(parent)
+        self.setupUi(self)
         self.parent = parent
         self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.Window)
         self.show()
